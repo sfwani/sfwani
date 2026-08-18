@@ -36,6 +36,7 @@ CWE_LABELS = {
     "CWE-639": "Insecure direct object reference",
     "CWE-862": "Missing authorization",
     "CWE-863": "Incorrect authorization",
+    "CWE-653": "Improper isolation",
     "CWE-918": "Server side request forgery",
     "CWE-1333": "Regex denial of service",
 }
@@ -67,6 +68,57 @@ def credited_ghsa_ids(s):
     return found
 
 
+def extra_repo_advisories():
+    """Repository level advisories that are published and credited but never
+    forwarded to the global database, so the credit search cannot see them.
+
+    Format: one "owner/repo GHSA-id" per line, blank lines and # comments ignored.
+    """
+    path = os.environ.get("EXTRA_ADVISORIES", "advisories.txt")
+    if not os.path.exists(path):
+        return []
+    out = []
+    for line in open(path, encoding="utf-8"):
+        line = line.split("#", 1)[0].strip()
+        if not line:
+            continue
+        parts = line.split()
+        if len(parts) == 2:
+            out.append((parts[0], parts[1]))
+    return out
+
+
+def resolve_repo_level(s, repo, ghsa_id):
+    """Only returns an advisory that is published and where USER credit is accepted."""
+    r = s.get(f"{API}/repos/{repo}/security-advisories/{ghsa_id}", timeout=30)
+    if r.status_code != 200:
+        print(f"skip {ghsa_id}: HTTP {r.status_code}", file=sys.stderr)
+        return None
+    a = r.json()
+    if a.get("state") != "published" or a.get("withdrawn_at"):
+        print(f"skip {ghsa_id}: state={a.get('state')}", file=sys.stderr)
+        return None
+    accepted = any(
+        (c.get("user") or {}).get("login") == USER and c.get("state") == "accepted"
+        for c in a.get("credits_detailed") or []
+    )
+    if not accepted:
+        print(f"skip {ghsa_id}: credit not accepted", file=sys.stderr)
+        return None
+    packages = sorted({v["package"]["name"] for v in a.get("vulnerabilities") or [] if v.get("package")})
+    cwes = [c["cwe_id"] for c in a.get("cwes") or []]
+    score = (a.get("cvss") or {}).get("score")
+    return {
+        "ghsa_id": a["ghsa_id"],
+        "cve_id": a.get("cve_id"),
+        "score": score if isinstance(score, (int, float)) else None,
+        "severity": (a.get("severity") or "").capitalize(),
+        "package": packages[0] if packages else repo.split("/")[-1],
+        "cwe": cwes[0] if cwes else None,
+        "url": a.get("html_url") or f"https://github.com/{repo}/security/advisories/{ghsa_id}",
+    }
+
+
 def resolve(s, ghsa_id):
     r = s.get(f"{API}/advisories/{ghsa_id}", timeout=30)
     if r.status_code != 200:
@@ -81,12 +133,26 @@ def resolve(s, ghsa_id):
     return {
         "ghsa_id": a["ghsa_id"],
         "cve_id": a.get("cve_id"),
-        "score": score if isinstance(score, (int, float)) else 0.0,
+        "score": score if isinstance(score, (int, float)) else None,
         "severity": (a.get("severity") or "").capitalize(),
         "package": packages[0] if packages else "n/a",
         "cwe": cwes[0] if cwes else None,
         "url": a.get("html_url") or f"https://github.com/advisories/{a['ghsa_id']}",
     }
+
+
+def short_package(name):
+    """Trim ecosystem qualifiers so the table stays readable.
+
+    Scoped npm names such as @budibase/server keep their scope, since the scope
+    is the project. Go module paths and Maven coordinates lose their prefix.
+    """
+    if name.startswith("@"):
+        return name
+    for sep in ("/", ":"):
+        if sep in name:
+            name = name.rsplit(sep, 1)[-1]
+    return name
 
 
 def label(cwe):
@@ -103,20 +169,22 @@ def render_table(rows):
     for r in rows:
         name = r["cve_id"] or r["ghsa_id"]
         cls = label(r["cwe"])
-        if r["cwe"]:
+        if r["cwe"] and cls != r["cwe"]:
             cls = f"{cls} ({r['cwe']})"
-        out.append(f"| [{name}]({r['url']}) | `{r['package']}` | {r['score']:.1f} {r['severity']} | {cls} |")
+        rating = f"{r['score']:.1f} {r['severity']}" if r["score"] is not None else r["severity"]
+        out.append(f"| [{name}]({r['url']}) | `{short_package(r['package'])}` | {rating} | {cls} |")
     return "\n".join(out)
 
 
 def render_counters(rows):
     n = len(rows)
-    top = max((r["score"] for r in rows), default=0.0)
+    cves = len({r["cve_id"] for r in rows if r["cve_id"]})
     projects = len({r["package"] for r in rows})
+    top = max((r["score"] for r in rows if r["score"] is not None), default=0.0)
     word = "advisory" if n == 1 else "advisories"
     return (
-        f"`{n} {word} credited` &nbsp;·&nbsp; `{projects} projects` "
-        f"&nbsp;·&nbsp; `highest published: CVSS {top:.1f}`"
+        f"`{n} published {word}` &nbsp;·&nbsp; `{cves} CVEs assigned` "
+        f"&nbsp;·&nbsp; `{projects} projects` &nbsp;·&nbsp; `highest published: CVSS {top:.1f}`"
     )
 
 
@@ -133,9 +201,17 @@ def main():
     ids = credited_ghsa_ids(s)
     print(f"credited advisories found: {len(ids)}", file=sys.stderr)
     rows = [r for r in (resolve(s, i) for i in ids) if r]
+    seen = {r["ghsa_id"] for r in rows}
+    for repo, ghsa_id in extra_repo_advisories():
+        if ghsa_id in seen:
+            continue
+        extra = resolve_repo_level(s, repo, ghsa_id)
+        if extra:
+            rows.append(extra)
+            seen.add(ghsa_id)
     if not rows:
         raise SystemExit("no advisories resolved, refusing to write an empty table")
-    rows.sort(key=lambda r: (-r["score"], r["package"]))
+    rows.sort(key=lambda r: (-(r["score"] if r["score"] is not None else -1), r["package"]))
 
     original = open(README, encoding="utf-8").read()
     updated = splice(original, "ADVISORIES", render_table(rows))
