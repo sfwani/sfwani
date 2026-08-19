@@ -201,12 +201,10 @@ def render_table(rows):
 def render_counters(rows):
     n = len(rows)
     cves = len({r["cve_id"] for r in rows if r["cve_id"]})
-    top = max((r["score"] for r in rows if r["score"] is not None), default=0.0)
     word = "advisory" if n == 1 else "advisories"
     return (
         f"`{cves} CVEs assigned` &nbsp;·&nbsp; `{n} published {word}` "
-        f"&nbsp;·&nbsp; `{REPORTS_FILED} reports across {PROJECTS_AUDITED} projects` "
-        f"&nbsp;·&nbsp; `highest CVSS {top:.1f}`"
+        f"&nbsp;·&nbsp; `{REPORTS_FILED} reports across {PROJECTS_AUDITED} projects`"
     )
 
 

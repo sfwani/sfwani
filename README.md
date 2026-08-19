@@ -9,7 +9,7 @@ infrastructure that runs large language models: agent frameworks, inference serv
 workflow orchestrators, and the serialization formats they trust.
 
 <!-- COUNTERS:START -->
-`7 CVEs assigned` &nbsp;·&nbsp; `9 published advisories` &nbsp;·&nbsp; `127 reports across 45 projects` &nbsp;·&nbsp; `highest CVSS 8.8`
+`7 CVEs assigned` &nbsp;·&nbsp; `9 published advisories` &nbsp;·&nbsp; `127 reports across 45 projects`
 <!-- COUNTERS:END -->
 
 </div>
@@ -70,11 +70,13 @@ one redirect away from a user supplied URL.
 </td></tr>
 </table>
 
-## DEF CON 34
+## Competition
 
-Built autonomous agents for AI Village HalCTF, the OWASP Secure Development CTF, and
-Adversary Wars: model exploitation, live patching of running vulnerable services, and flag
-capture with no human in the loop.
+| | |
+|:--|:--|
+| **1st place** | AI Village, DEF CON 34 |
+| **2nd place** | Adversary Village, DEF CON 34 |
+| **1st place** | Adversary Village, DEF CON 33 |
 
 <div align="center">
 <br>
