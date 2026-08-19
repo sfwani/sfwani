@@ -73,13 +73,11 @@ one redirect away from a user supplied URL.
 ## Competition
 
 <div align="center">
-
-| | |
-|:--|:--|
-| **1st place** | AI Village, DEF CON 34 |
-| **2nd place** | Adversary Village, DEF CON 34 |
-| **1st place** | Adversary Village, DEF CON 33 |
-
+<table>
+<tr><td align="right"><b>1st place</b></td><td>AI Village, DEF CON 34</td></tr>
+<tr><td align="right"><b>2nd place</b></td><td>Adversary Village, DEF CON 34</td></tr>
+<tr><td align="right"><b>1st place</b></td><td>Adversary Village, DEF CON 33</td></tr>
+</table>
 </div>
 
 <div align="center">
