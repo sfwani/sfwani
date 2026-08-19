@@ -70,7 +70,7 @@ one redirect away from a user supplied URL.
 </td></tr>
 </table>
 
-## Competition
+## Competitions
 
 <div align="center">
 
