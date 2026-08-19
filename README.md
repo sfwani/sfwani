@@ -73,11 +73,11 @@ one redirect away from a user supplied URL.
 ## Competition
 
 <div align="center">
-<table>
-<tr><td align="right"><b>1st place</b></td><td>AI Village, DEF CON 34</td></tr>
-<tr><td align="right"><b>2nd place</b></td><td>Adversary Village, DEF CON 34</td></tr>
-<tr><td align="right"><b>1st place</b></td><td>Adversary Village, DEF CON 33</td></tr>
-</table>
+
+![1st place, AI Village, DEF CON 34](https://img.shields.io/badge/1st_place-AI_Village,_DEF_CON_34-c9a227?style=flat-square)<br>
+![2nd place, Adversary Village, DEF CON 34](https://img.shields.io/badge/2nd_place-Adversary_Village,_DEF_CON_34-9aa0a6?style=flat-square)<br>
+![1st place, Adversary Village, DEF CON 33](https://img.shields.io/badge/1st_place-Adversary_Village,_DEF_CON_33-c9a227?style=flat-square)
+
 </div>
 
 <div align="center">
