@@ -22,7 +22,7 @@ workflow orchestrators, and the serialization formats they trust.
 | [CVE-2026-57516](https://github.com/advisories/GHSA-hhrp-gw25-jr43) | `ray` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Code injection (CWE-94) |
 | [CVE-2026-45675](https://github.com/advisories/GHSA-h3ww-q6xx-w7x3) | `open-webui` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Privilege escalation (CWE-269) |
 | [CVE-2026-59714](https://github.com/advisories/GHSA-x2ff-v5v8-m75m) | `open-webui` | ![7.1 High](https://img.shields.io/badge/7.1-High-cf222e?style=flat-square) | Missing authorization (CWE-862) |
-| [GHSA-pqxw-g93w-hj9x](https://github.com/triggerdotdev/trigger.dev/security/advisories/GHSA-pqxw-g93w-hj9x) | `trigger.dev` | ![High no score published](https://img.shields.io/badge/High-no%20score%20published-cf222e?style=flat-square) | Improper isolation (CWE-653) |
+| [GHSA-pqxw-g93w-hj9x](https://github.com/triggerdotdev/trigger.dev/security/advisories/GHSA-pqxw-g93w-hj9x) | `trigger.dev` | ![High](https://img.shields.io/badge/High-cf222e?style=flat-square) | Improper isolation (CWE-653) |
 | [CVE-2026-53577](https://github.com/kestra-io/kestra/security/advisories/GHSA-r6v3-xxwj-9h42) | `kestra` | ![6.5 Medium](https://img.shields.io/badge/6.5-Medium-d4a72c?style=flat-square) | Incorrect authorization (CWE-863) |
 | [CVE-2026-63342](https://github.com/hatchet-dev/hatchet/security/advisories/GHSA-g26x-m427-f48f) | `hatchet` | ![6.3 Medium](https://img.shields.io/badge/6.3-Medium-d4a72c?style=flat-square) | Incorrect authorization (CWE-863) |
 | [GHSA-59h8-w5q6-mfmp](https://github.com/triggerdotdev/trigger.dev/security/advisories/GHSA-59h8-w5q6-mfmp) | `trigger.dev` | ![5.3 Medium](https://img.shields.io/badge/5.3-Medium-d4a72c?style=flat-square) | Missing authentication (CWE-306) |
@@ -30,7 +30,9 @@ workflow orchestrators, and the serialization formats they trust.
 | [CVE-2026-59715](https://github.com/advisories/GHSA-gmfw-g93r-vg53) | `open-webui` | ![3.1 Low](https://img.shields.io/badge/3.1-Low-2da44e?style=flat-square) | Missing authentication (CWE-306) |
 <!-- ADVISORIES:END -->
 
-<sub>Regenerated daily from the [GitHub Advisory Database](https://github.com/advisories?query=credit%3Asfwani) and from repository level advisories that were never forwarded to it. Full root cause, reproduction, and fix diffs: **[sfwani/advisories](https://github.com/sfwani/advisories)**</sub>
+Root cause, reproduction, and fix diffs for every one of these: **[sfwani/advisories](https://github.com/sfwani/advisories)**
+
+<sub>Table regenerates daily from the [GitHub Advisory Database](https://github.com/advisories?query=credit%3Asfwani).</sub>
 
 ## What I look for
 

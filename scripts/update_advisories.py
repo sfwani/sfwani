@@ -167,12 +167,14 @@ def short_package(name):
 def rating_badge(score, severity):
     """Colour the severity so the table can be read at a glance."""
     color = SEVERITY_COLOR.get(severity.lower(), "6e7781")
-    left = f"{score:.1f}" if score is not None else severity
-    right = severity if score is not None else "no score published"
-    alt = f"{left} {right}"
-    left_q = urllib.parse.quote(left, safe="")
-    right_q = urllib.parse.quote(right, safe="")
-    return f"![{alt}](https://img.shields.io/badge/{left_q}-{right_q}-{color}?style=flat-square)"
+    if score is None:
+        # A maintainer who published without a score should not get the loudest
+        # cell in the table, so this stays a plain single colour badge.
+        text = urllib.parse.quote(severity, safe="")
+        return f"![{severity}](https://img.shields.io/badge/{text}-{color}?style=flat-square)"
+    left = urllib.parse.quote(f"{score:.1f}", safe="")
+    right = urllib.parse.quote(severity, safe="")
+    return f"![{score:.1f} {severity}](https://img.shields.io/badge/{left}-{right}-{color}?style=flat-square)"
 
 
 def label(cwe):
