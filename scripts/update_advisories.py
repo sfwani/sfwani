@@ -10,6 +10,7 @@ import os
 import re
 import sys
 import time
+import urllib.parse
 
 import requests
 
@@ -17,6 +18,14 @@ USER = os.environ.get("ADVISORY_CREDIT_USER", "sfwani")
 README = os.environ.get("README_PATH", "README.md")
 API = "https://api.github.com"
 UA = "sfwani-profile-updater"
+
+# These two come from private research notes rather than the API, so they are
+# maintained by hand. Everything else on the page is derived from public data.
+REPORTS_FILED = 127
+PROJECTS_AUDITED = 45
+
+SEVERITY_RANK = {"critical": 0, "high": 1, "medium": 2, "low": 3}
+SEVERITY_COLOR = {"critical": "8b1a1a", "high": "cf222e", "medium": "d4a72c", "low": "2da44e"}
 
 # Short, readable labels for the CWEs that actually show up in this work.
 CWE_LABELS = {
@@ -155,6 +164,17 @@ def short_package(name):
     return name
 
 
+def rating_badge(score, severity):
+    """Colour the severity so the table can be read at a glance."""
+    color = SEVERITY_COLOR.get(severity.lower(), "6e7781")
+    left = f"{score:.1f}" if score is not None else severity
+    right = severity if score is not None else "no score published"
+    alt = f"{left} {right}"
+    left_q = urllib.parse.quote(left, safe="")
+    right_q = urllib.parse.quote(right, safe="")
+    return f"![{alt}](https://img.shields.io/badge/{left_q}-{right_q}-{color}?style=flat-square)"
+
+
 def label(cwe):
     if not cwe:
         return "Other"
@@ -171,7 +191,7 @@ def render_table(rows):
         cls = label(r["cwe"])
         if r["cwe"] and cls != r["cwe"]:
             cls = f"{cls} ({r['cwe']})"
-        rating = f"{r['score']:.1f} {r['severity']}" if r["score"] is not None else r["severity"]
+        rating = rating_badge(r["score"], r["severity"])
         out.append(f"| [{name}]({r['url']}) | `{short_package(r['package'])}` | {rating} | {cls} |")
     return "\n".join(out)
 
@@ -179,12 +199,12 @@ def render_table(rows):
 def render_counters(rows):
     n = len(rows)
     cves = len({r["cve_id"] for r in rows if r["cve_id"]})
-    projects = len({r["package"] for r in rows})
     top = max((r["score"] for r in rows if r["score"] is not None), default=0.0)
     word = "advisory" if n == 1 else "advisories"
     return (
-        f"`{n} published {word}` &nbsp;·&nbsp; `{cves} CVEs assigned` "
-        f"&nbsp;·&nbsp; `{projects} projects` &nbsp;·&nbsp; `highest published: CVSS {top:.1f}`"
+        f"`{cves} CVEs assigned` &nbsp;·&nbsp; `{n} published {word}` "
+        f"&nbsp;·&nbsp; `{REPORTS_FILED} reports across {PROJECTS_AUDITED} projects` "
+        f"&nbsp;·&nbsp; `highest CVSS {top:.1f}`"
     )
 
 
@@ -211,7 +231,11 @@ def main():
             seen.add(ghsa_id)
     if not rows:
         raise SystemExit("no advisories resolved, refusing to write an empty table")
-    rows.sort(key=lambda r: (-(r["score"] if r["score"] is not None else -1), r["package"]))
+    rows.sort(key=lambda r: (
+        SEVERITY_RANK.get(r["severity"].lower(), 9),
+        -(r["score"] if r["score"] is not None else 0.0),
+        r["package"],
+    ))
 
     original = open(README, encoding="utf-8").read()
     updated = splice(original, "ADVISORIES", render_table(rows))
