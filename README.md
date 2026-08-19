@@ -72,11 +72,15 @@ one redirect away from a user supplied URL.
 
 ## Competition
 
+<div align="center">
+
 | | |
 |:--|:--|
 | **1st place** | AI Village, DEF CON 34 |
 | **2nd place** | Adversary Village, DEF CON 34 |
 | **1st place** | Adversary Village, DEF CON 33 |
+
+</div>
 
 <div align="center">
 <br>
