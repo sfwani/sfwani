@@ -4,12 +4,13 @@
 
 ### I break AI agent frameworks.
 
-Security Engineer at Amazon. I hunt unauthenticated remote code execution in the
+Security Engineer at Amazon, working in IAM security on bringing agentic AI into identity
+and access management. Outside that, I hunt unauthenticated remote code execution in the
 infrastructure that runs large language models: agent frameworks, inference servers,
 workflow orchestrators, and the serialization formats they trust.
 
 <!-- COUNTERS:START -->
-`7 CVEs assigned` &nbsp;·&nbsp; `9 published advisories` &nbsp;·&nbsp; `127 reports across 45 projects`
+`7 CVEs assigned` &nbsp;·&nbsp; `11 published advisories` &nbsp;·&nbsp; `167 filed across 59 projects`
 <!-- COUNTERS:END -->
 
 </div>
@@ -21,6 +22,8 @@ workflow orchestrators, and the serialization formats they trust.
 |:---|:---|:---|:---|
 | [CVE-2026-57516](https://github.com/advisories/GHSA-hhrp-gw25-jr43) | `ray` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Code injection (CWE-94) |
 | [CVE-2026-45675](https://github.com/advisories/GHSA-h3ww-q6xx-w7x3) | `open-webui` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Privilege escalation (CWE-269) |
+| [GHSA-jc26-22qp-cgqj](https://github.com/triggerdotdev/trigger.dev/security/advisories/GHSA-jc26-22qp-cgqj) | `trigger.dev` | ![7.9 High](https://img.shields.io/badge/7.9-High-cf222e?style=flat-square) | Missing authentication (CWE-306) |
+| [GHSA-3c52-v5v2-3r56](https://github.com/Budibase/budibase/security/advisories/GHSA-3c52-v5v2-3r56) | `budibase` | ![7.7 High](https://img.shields.io/badge/7.7-High-cf222e?style=flat-square) | Server side request forgery (CWE-918) |
 | [CVE-2026-59714](https://github.com/advisories/GHSA-x2ff-v5v8-m75m) | `open-webui` | ![7.1 High](https://img.shields.io/badge/7.1-High-cf222e?style=flat-square) | Missing authorization (CWE-862) |
 | [GHSA-pqxw-g93w-hj9x](https://github.com/triggerdotdev/trigger.dev/security/advisories/GHSA-pqxw-g93w-hj9x) | `trigger.dev` | ![High](https://img.shields.io/badge/High-cf222e?style=flat-square) | Improper isolation (CWE-653) |
 | [CVE-2026-53577](https://github.com/kestra-io/kestra/security/advisories/GHSA-r6v3-xxwj-9h42) | `kestra` | ![6.5 Medium](https://img.shields.io/badge/6.5-Medium-d4a72c?style=flat-square) | Incorrect authorization (CWE-863) |
@@ -32,7 +35,8 @@ workflow orchestrators, and the serialization formats they trust.
 
 Root cause, reproduction, and fix diffs for every one of these: **[sfwani/advisories](https://github.com/sfwani/advisories)**
 
-<sub>Table regenerates daily from the [GitHub Advisory Database](https://github.com/advisories?query=credit%3Asfwani).</sub>
+<sub>Table regenerates daily from published advisories credited to me. Verify independently:
+[GitHub Advisory Database](https://github.com/advisories?query=credit%3Asfwani).</sub>
 
 ## What I look for
 
@@ -70,19 +74,30 @@ one redirect away from a user supplied URL.
 </td></tr>
 </table>
 
+## Disclosure
+
+Reports go to maintainers privately, through GitHub Security Advisories or the project's
+stated security channel, never a public issue tracker. Advisories carry a 90 day
+disclosure window. Nothing is named, hinted at, or mirrored publicly until the maintainer
+publishes.
+
 ## Competitions
 
-<div align="center">
-
-![1st place, AI Village, DEF CON 34](https://img.shields.io/badge/1st_place-AI_Village,_DEF_CON_34-c9a227?style=flat-square)<br>
-![2nd place, Adversary Village, DEF CON 34](https://img.shields.io/badge/2nd_place-Adversary_Village,_DEF_CON_34-9aa0a6?style=flat-square)<br>
-![1st place, Adversary Village, DEF CON 33](https://img.shields.io/badge/1st_place-Adversary_Village,_DEF_CON_33-c9a227?style=flat-square)
-
-</div>
+| Placement | Event |
+|:---|:---|
+| **1st** | AI Village CTF, DEF CON 34 |
+| **2nd** | Adversary Wars CTF, Adversary Village, DEF CON 34 |
+| **1st** | Adversary Wars CTF, Adversary Village, DEF CON 33 |
+| **1st** | SHPE National CTF |
+| **1st** | Hackabull CTF |
+| **1st** | Central Florida Tech Grove CTF |
+| **1st** | Social Engineering Competition, The CARE Lab at Temple University |
+| **3rd** | SecureTheFuture Research Award, Palo Alto Networks |
+| **3rd** | NCAE CyberGames, South East Regionals |
 
 <div align="center">
 <br>
 
-[**LinkedIn**](https://www.linkedin.com/in/sfwani) &nbsp;·&nbsp; [**Advisories**](https://github.com/sfwani/advisories)
+[**Website**](https://sfwani.github.io) &nbsp;·&nbsp; [**LinkedIn**](https://www.linkedin.com/in/sfwani) &nbsp;·&nbsp; [**Advisories**](https://github.com/sfwani/advisories)
 
 </div>

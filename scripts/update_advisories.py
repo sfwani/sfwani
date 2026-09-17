@@ -21,8 +21,8 @@ UA = "sfwani-profile-updater"
 
 # These two come from private research notes rather than the API, so they are
 # maintained by hand. Everything else on the page is derived from public data.
-REPORTS_FILED = 127
-PROJECTS_AUDITED = 45
+REPORTS_FILED = 167
+PROJECTS_AUDITED = 59
 
 SEVERITY_RANK = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 SEVERITY_COLOR = {"critical": "8b1a1a", "high": "cf222e", "medium": "d4a72c", "low": "2da44e"}
@@ -204,7 +204,7 @@ def render_counters(rows):
     word = "advisory" if n == 1 else "advisories"
     return (
         f"`{cves} CVEs assigned` &nbsp;·&nbsp; `{n} published {word}` "
-        f"&nbsp;·&nbsp; `{REPORTS_FILED} reports across {PROJECTS_AUDITED} projects`"
+        f"&nbsp;·&nbsp; `{REPORTS_FILED} filed across {PROJECTS_AUDITED} projects`"
     )
 
 
