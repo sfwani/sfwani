@@ -17,6 +17,7 @@ import requests
 USER = os.environ.get("ADVISORY_CREDIT_USER", "sfwani")
 README = os.environ.get("README_PATH", "README.md")
 API = "https://api.github.com"
+SITE = "https://sfwani.github.io"
 UA = "sfwani-profile-updater"
 
 # These two come from private research notes rather than the API, so they are
@@ -124,7 +125,7 @@ def resolve_repo_level(s, repo, ghsa_id):
         "severity": (a.get("severity") or "").capitalize(),
         "package": packages[0] if packages else repo.split("/")[-1],
         "cwe": cwes[0] if cwes else None,
-        "url": a.get("html_url") or f"https://github.com/{repo}/security/advisories/{ghsa_id}",
+        "url": f"{SITE}/advisories/{(a.get('cve_id') or a['ghsa_id']).lower()}/",
     }
 
 
@@ -146,7 +147,7 @@ def resolve(s, ghsa_id):
         "severity": (a.get("severity") or "").capitalize(),
         "package": packages[0] if packages else "n/a",
         "cwe": cwes[0] if cwes else None,
-        "url": a.get("html_url") or f"https://github.com/advisories/{a['ghsa_id']}",
+        "url": f"{SITE}/advisories/{(a.get('cve_id') or a['ghsa_id']).lower()}/",
     }
 
 

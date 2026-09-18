@@ -20,20 +20,21 @@ workflow orchestrators, and the serialization formats they trust.
 <!-- ADVISORIES:START -->
 | Advisory | Project | CVSS | Class |
 |:---|:---|:---|:---|
-| [CVE-2026-57516](https://github.com/advisories/GHSA-hhrp-gw25-jr43) | `ray` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Code injection (CWE-94) |
-| [CVE-2026-45675](https://github.com/advisories/GHSA-h3ww-q6xx-w7x3) | `open-webui` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Privilege escalation (CWE-269) |
-| [GHSA-jc26-22qp-cgqj](https://github.com/triggerdotdev/trigger.dev/security/advisories/GHSA-jc26-22qp-cgqj) | `trigger.dev` | ![7.9 High](https://img.shields.io/badge/7.9-High-cf222e?style=flat-square) | Missing authentication (CWE-306) |
-| [GHSA-3c52-v5v2-3r56](https://github.com/Budibase/budibase/security/advisories/GHSA-3c52-v5v2-3r56) | `budibase` | ![7.7 High](https://img.shields.io/badge/7.7-High-cf222e?style=flat-square) | Server side request forgery (CWE-918) |
-| [CVE-2026-59714](https://github.com/advisories/GHSA-x2ff-v5v8-m75m) | `open-webui` | ![7.1 High](https://img.shields.io/badge/7.1-High-cf222e?style=flat-square) | Missing authorization (CWE-862) |
-| [GHSA-pqxw-g93w-hj9x](https://github.com/triggerdotdev/trigger.dev/security/advisories/GHSA-pqxw-g93w-hj9x) | `trigger.dev` | ![High](https://img.shields.io/badge/High-cf222e?style=flat-square) | Improper isolation (CWE-653) |
-| [CVE-2026-53577](https://github.com/kestra-io/kestra/security/advisories/GHSA-r6v3-xxwj-9h42) | `kestra` | ![6.5 Medium](https://img.shields.io/badge/6.5-Medium-d4a72c?style=flat-square) | Incorrect authorization (CWE-863) |
-| [CVE-2026-63342](https://github.com/hatchet-dev/hatchet/security/advisories/GHSA-g26x-m427-f48f) | `hatchet` | ![6.3 Medium](https://img.shields.io/badge/6.3-Medium-d4a72c?style=flat-square) | Incorrect authorization (CWE-863) |
-| [GHSA-59h8-w5q6-mfmp](https://github.com/triggerdotdev/trigger.dev/security/advisories/GHSA-59h8-w5q6-mfmp) | `trigger.dev` | ![5.3 Medium](https://img.shields.io/badge/5.3-Medium-d4a72c?style=flat-square) | Missing authentication (CWE-306) |
-| [CVE-2026-73301](https://github.com/advisories/GHSA-4qcj-m5wp-jmf4) | `@budibase/server` | ![4.3 Medium](https://img.shields.io/badge/4.3-Medium-d4a72c?style=flat-square) | Missing authorization (CWE-862) |
-| [CVE-2026-59715](https://github.com/advisories/GHSA-gmfw-g93r-vg53) | `open-webui` | ![3.1 Low](https://img.shields.io/badge/3.1-Low-2da44e?style=flat-square) | Missing authentication (CWE-306) |
+| [CVE-2026-57516](https://sfwani.github.io/advisories/cve-2026-57516/) | `ray` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Code injection (CWE-94) |
+| [CVE-2026-45675](https://sfwani.github.io/advisories/cve-2026-45675/) | `open-webui` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Privilege escalation (CWE-269) |
+| [GHSA-jc26-22qp-cgqj](https://sfwani.github.io/advisories/ghsa-jc26-22qp-cgqj/) | `trigger.dev` | ![7.9 High](https://img.shields.io/badge/7.9-High-cf222e?style=flat-square) | Missing authentication (CWE-306) |
+| [GHSA-3c52-v5v2-3r56](https://sfwani.github.io/advisories/ghsa-3c52-v5v2-3r56/) | `budibase` | ![7.7 High](https://img.shields.io/badge/7.7-High-cf222e?style=flat-square) | Server side request forgery (CWE-918) |
+| [CVE-2026-59714](https://sfwani.github.io/advisories/cve-2026-59714/) | `open-webui` | ![7.1 High](https://img.shields.io/badge/7.1-High-cf222e?style=flat-square) | Missing authorization (CWE-862) |
+| [GHSA-pqxw-g93w-hj9x](https://sfwani.github.io/advisories/ghsa-pqxw-g93w-hj9x/) | `trigger.dev` | ![High](https://img.shields.io/badge/High-cf222e?style=flat-square) | Improper isolation (CWE-653) |
+| [CVE-2026-53577](https://sfwani.github.io/advisories/cve-2026-53577/) | `kestra` | ![6.5 Medium](https://img.shields.io/badge/6.5-Medium-d4a72c?style=flat-square) | Incorrect authorization (CWE-863) |
+| [CVE-2026-63342](https://sfwani.github.io/advisories/cve-2026-63342/) | `hatchet` | ![6.3 Medium](https://img.shields.io/badge/6.3-Medium-d4a72c?style=flat-square) | Incorrect authorization (CWE-863) |
+| [GHSA-59h8-w5q6-mfmp](https://sfwani.github.io/advisories/ghsa-59h8-w5q6-mfmp/) | `trigger.dev` | ![5.3 Medium](https://img.shields.io/badge/5.3-Medium-d4a72c?style=flat-square) | Missing authentication (CWE-306) |
+| [CVE-2026-73301](https://sfwani.github.io/advisories/cve-2026-73301/) | `@budibase/server` | ![4.3 Medium](https://img.shields.io/badge/4.3-Medium-d4a72c?style=flat-square) | Missing authorization (CWE-862) |
+| [CVE-2026-59715](https://sfwani.github.io/advisories/cve-2026-59715/) | `open-webui` | ![3.1 Low](https://img.shields.io/badge/3.1-Low-2da44e?style=flat-square) | Missing authentication (CWE-306) |
 <!-- ADVISORIES:END -->
 
-Root cause, reproduction, and fix diffs for every one of these: **[sfwani/advisories](https://github.com/sfwani/advisories)**
+Each advisory above links to a full writeup: root cause, the vulnerable code, reproduction
+steps and the fix. Mirrored at **[sfwani/advisories](https://github.com/sfwani/advisories)**.
 
 <sub>Table regenerates daily from published advisories credited to me. Verify independently:
 [GitHub Advisory Database](https://github.com/advisories?query=credit%3Asfwani).</sub>
@@ -98,6 +99,6 @@ publishes.
 <div align="center">
 <br>
 
-[**Website**](https://sfwani.github.io) &nbsp;·&nbsp; [**LinkedIn**](https://www.linkedin.com/in/sfwani) &nbsp;·&nbsp; [**Advisories**](https://github.com/sfwani/advisories)
+[**Website**](https://sfwani.github.io) &nbsp;·&nbsp; [**Experience**](https://sfwani.github.io/experience/) &nbsp;·&nbsp; [**Advisories**](https://sfwani.github.io/advisories/) &nbsp;·&nbsp; [**LinkedIn**](https://www.linkedin.com/in/sfwani)
 
 </div>
