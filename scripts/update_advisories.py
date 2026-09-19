@@ -207,12 +207,8 @@ def rating_badge(r):
         # cell in the table, so this stays a plain single colour badge.
         text = urllib.parse.quote(severity, safe="")
         return f"![{severity}](https://img.shields.io/badge/{text}-{color}?style=flat-square)"
-    # A score I derived carries an asterisk and is footnoted under the table.
-    # The alt text spells it out too, because a badge is an image and the alt
-    # is the only part of it a crawler or a screen reader ever sees.
-    mark = "*" if r.get("self_assessed") else ""
-    alt = f"{score:.1f}{mark} {severity}" + (" (self-assessed)" if mark else "")
-    left = urllib.parse.quote(f"{score:.1f}{mark}", safe="")
+    alt = f"{score:.1f} {severity}"
+    left = urllib.parse.quote(f"{score:.1f}", safe="")
     right = urllib.parse.quote(severity, safe="")
     return f"![{alt}](https://img.shields.io/badge/{left}-{right}-{color}?style=flat-square)"
 
@@ -235,11 +231,6 @@ def render_table(rows):
             cls = f"{cls} ({r['cwe']})"
         rating = rating_badge(r)
         out.append(f"| [{name}]({r['url']}) | `{short_package(r['package'])}` | {rating} | {cls} |")
-    if any(r.get("self_assessed") for r in rows):
-        out += ["", "\\* Scored by me, not by the coordinating database. That advisory was published "
-                    "with a severity but no CVSS score and no vector, in v3 or v4; the score shown is my "
-                    "own CVSS v3.1 base score derived from the published finding, and its vector is on "
-                    "the advisory page."]
     return "\n".join(out)
 
 

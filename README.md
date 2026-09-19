@@ -20,7 +20,7 @@ workflow orchestrators, and the serialization formats they trust.
 <!-- ADVISORIES:START -->
 | Advisory | Project | CVSS | Class |
 |:---|:---|:---|:---|
-| [GHSA-pqxw-g93w-hj9x](https://sfwani.github.io/advisories/ghsa-pqxw-g93w-hj9x/) | `trigger.dev` | ![9.0* High (self-assessed)](https://img.shields.io/badge/9.0%2A-High-cf222e?style=flat-square) | Improper isolation (CWE-653) |
+| [GHSA-pqxw-g93w-hj9x](https://sfwani.github.io/advisories/ghsa-pqxw-g93w-hj9x/) | `trigger.dev` | ![9.0 High](https://img.shields.io/badge/9.0-High-cf222e?style=flat-square) | Improper isolation (CWE-653) |
 | [CVE-2026-57516](https://sfwani.github.io/advisories/cve-2026-57516/) | `ray` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Code injection (CWE-94) |
 | [CVE-2026-45675](https://sfwani.github.io/advisories/cve-2026-45675/) | `open-webui` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Privilege escalation (CWE-269) |
 | [GHSA-jc26-22qp-cgqj](https://sfwani.github.io/advisories/ghsa-jc26-22qp-cgqj/) | `trigger.dev` | ![7.9 High](https://img.shields.io/badge/7.9-High-cf222e?style=flat-square) | Missing authentication (CWE-306) |
@@ -31,8 +31,6 @@ workflow orchestrators, and the serialization formats they trust.
 | [GHSA-59h8-w5q6-mfmp](https://sfwani.github.io/advisories/ghsa-59h8-w5q6-mfmp/) | `trigger.dev` | ![5.3 Medium](https://img.shields.io/badge/5.3-Medium-d4a72c?style=flat-square) | Missing authentication (CWE-306) |
 | [CVE-2026-73301](https://sfwani.github.io/advisories/cve-2026-73301/) | `@budibase/server` | ![4.3 Medium](https://img.shields.io/badge/4.3-Medium-d4a72c?style=flat-square) | Missing authorization (CWE-862) |
 | [CVE-2026-59715](https://sfwani.github.io/advisories/cve-2026-59715/) | `open-webui` | ![3.1 Low](https://img.shields.io/badge/3.1-Low-2da44e?style=flat-square) | Missing authentication (CWE-306) |
-
-\* Scored by me, not by the coordinating database. That advisory was published with a severity but no CVSS score and no vector, in v3 or v4; the score shown is my own CVSS v3.1 base score derived from the published finding, and its vector is on the advisory page.
 <!-- ADVISORIES:END -->
 
 Each advisory above links to a full writeup: root cause, the vulnerable code, reproduction
