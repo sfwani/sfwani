@@ -28,6 +28,35 @@ PROJECTS_AUDITED = 59
 SEVERITY_RANK = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 SEVERITY_COLOR = {"critical": "8b1a1a", "high": "cf222e", "medium": "d4a72c", "low": "2da44e"}
 
+# Kept byte for byte in step with sfwani.github.io/scripts/update_advisories.py.
+# GHSA-pqxw-g93w-hj9x was published High with no CVSS score and no vector, in
+# v3 or v4, so nothing upstream can supply one and it was the only row in the
+# table without a number. This vector is derived by hand from the advisory's
+# own text and computes to 9.0. It is marked wherever it is shown, because the
+# claim these surfaces make is that their numbers resolve to a public advisory
+# and this one does not.
+SELF_ASSESSED = {
+    "GHSA-pqxw-g93w-hj9x": {
+        "score": 9.0,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+    },
+}
+
+
+def cvss_of(a):
+    """Return (score, vector, self_assessed) for one advisory payload."""
+    cvss = a.get("cvss") or {}
+    score, vector = cvss.get("score"), cvss.get("vector_string")
+    if not vector:
+        v3 = (a.get("cvss_severities") or {}).get("cvss_v3") or {}
+        score, vector = score if score is not None else v3.get("score"), v3.get("vector_string")
+    if isinstance(score, (int, float)) and vector:
+        return float(score), vector, False
+    sa = SELF_ASSESSED.get(a.get("ghsa_id"))
+    if sa:
+        return sa["score"], sa["vector"], True
+    return (float(score) if isinstance(score, (int, float)) else None), vector, False
+
 # Short, readable labels for the CWEs that actually show up in this work.
 CWE_LABELS = {
     "CWE-22": "Path traversal",
@@ -117,11 +146,13 @@ def resolve_repo_level(s, repo, ghsa_id):
         return None
     packages = sorted({v["package"]["name"] for v in a.get("vulnerabilities") or [] if v.get("package")})
     cwes = [c["cwe_id"] for c in a.get("cwes") or []]
-    score = (a.get("cvss") or {}).get("score")
+    score, vector, self_assessed = cvss_of(a)
     return {
         "ghsa_id": a["ghsa_id"],
         "cve_id": a.get("cve_id"),
-        "score": score if isinstance(score, (int, float)) else None,
+        "score": score,
+        "vector": vector,
+        "self_assessed": self_assessed,
         "severity": (a.get("severity") or "").capitalize(),
         "package": packages[0] if packages else repo.split("/")[-1],
         "cwe": cwes[0] if cwes else None,
@@ -139,11 +170,13 @@ def resolve(s, ghsa_id):
         return None
     packages = sorted({v["package"]["name"] for v in a.get("vulnerabilities") or [] if v.get("package")})
     cwes = [c["cwe_id"] for c in a.get("cwes") or []]
-    score = (a.get("cvss") or {}).get("score")
+    score, vector, self_assessed = cvss_of(a)
     return {
         "ghsa_id": a["ghsa_id"],
         "cve_id": a.get("cve_id"),
-        "score": score if isinstance(score, (int, float)) else None,
+        "score": score,
+        "vector": vector,
+        "self_assessed": self_assessed,
         "severity": (a.get("severity") or "").capitalize(),
         "package": packages[0] if packages else "n/a",
         "cwe": cwes[0] if cwes else None,
@@ -165,17 +198,23 @@ def short_package(name):
     return name
 
 
-def rating_badge(score, severity):
+def rating_badge(r):
     """Colour the severity so the table can be read at a glance."""
+    score, severity = r["score"], r["severity"]
     color = SEVERITY_COLOR.get(severity.lower(), "6e7781")
     if score is None:
         # A maintainer who published without a score should not get the loudest
         # cell in the table, so this stays a plain single colour badge.
         text = urllib.parse.quote(severity, safe="")
         return f"![{severity}](https://img.shields.io/badge/{text}-{color}?style=flat-square)"
-    left = urllib.parse.quote(f"{score:.1f}", safe="")
+    # A score I derived carries an asterisk and is footnoted under the table.
+    # The alt text spells it out too, because a badge is an image and the alt
+    # is the only part of it a crawler or a screen reader ever sees.
+    mark = "*" if r.get("self_assessed") else ""
+    alt = f"{score:.1f}{mark} {severity}" + (" (self-assessed)" if mark else "")
+    left = urllib.parse.quote(f"{score:.1f}{mark}", safe="")
     right = urllib.parse.quote(severity, safe="")
-    return f"![{score:.1f} {severity}](https://img.shields.io/badge/{left}-{right}-{color}?style=flat-square)"
+    return f"![{alt}](https://img.shields.io/badge/{left}-{right}-{color}?style=flat-square)"
 
 
 def label(cwe):
@@ -194,8 +233,13 @@ def render_table(rows):
         cls = label(r["cwe"])
         if r["cwe"] and cls != r["cwe"]:
             cls = f"{cls} ({r['cwe']})"
-        rating = rating_badge(r["score"], r["severity"])
+        rating = rating_badge(r)
         out.append(f"| [{name}]({r['url']}) | `{short_package(r['package'])}` | {rating} | {cls} |")
+    if any(r.get("self_assessed") for r in rows):
+        out += ["", "\\* Scored by me, not by the coordinating database. That advisory was published "
+                    "with a severity but no CVSS score and no vector, in v3 or v4; the score shown is my "
+                    "own CVSS v3.1 base score derived from the published finding, and its vector is on "
+                    "the advisory page."]
     return "\n".join(out)
 
 
