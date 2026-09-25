@@ -10,7 +10,7 @@ infrastructure that runs large language models: agent frameworks, inference serv
 workflow orchestrators, and the serialization formats they trust.
 
 <!-- COUNTERS:START -->
-`7 CVEs assigned` &nbsp;·&nbsp; `11 published advisories` &nbsp;·&nbsp; `167 filed across 59 projects`
+`7 CVEs assigned` &nbsp;·&nbsp; `12 published advisories` &nbsp;·&nbsp; `167 filed across 59 projects`
 <!-- COUNTERS:END -->
 
 </div>
@@ -20,12 +20,13 @@ workflow orchestrators, and the serialization formats they trust.
 <!-- ADVISORIES:START -->
 | Advisory | Project | CVSS | Class |
 |:---|:---|:---|:---|
-| [GHSA-pqxw-g93w-hj9x](https://sfwani.github.io/advisories/ghsa-pqxw-g93w-hj9x/) | `trigger.dev` | ![9.0 High](https://img.shields.io/badge/9.0-High-cf222e?style=flat-square) | Improper isolation (CWE-653) |
 | [CVE-2026-57516](https://sfwani.github.io/advisories/cve-2026-57516/) | `ray` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Code injection (CWE-94) |
 | [CVE-2026-45675](https://sfwani.github.io/advisories/cve-2026-45675/) | `open-webui` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Privilege escalation (CWE-269) |
+| [GHSA-pqxw-g93w-hj9x](https://sfwani.github.io/advisories/ghsa-pqxw-g93w-hj9x/) | `trigger.dev` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Improper isolation (CWE-653) |
 | [GHSA-jc26-22qp-cgqj](https://sfwani.github.io/advisories/ghsa-jc26-22qp-cgqj/) | `trigger.dev` | ![7.9 High](https://img.shields.io/badge/7.9-High-cf222e?style=flat-square) | Missing authentication (CWE-306) |
 | [GHSA-3c52-v5v2-3r56](https://sfwani.github.io/advisories/ghsa-3c52-v5v2-3r56/) | `budibase` | ![7.7 High](https://img.shields.io/badge/7.7-High-cf222e?style=flat-square) | Server side request forgery (CWE-918) |
 | [CVE-2026-59714](https://sfwani.github.io/advisories/cve-2026-59714/) | `open-webui` | ![7.1 High](https://img.shields.io/badge/7.1-High-cf222e?style=flat-square) | Missing authorization (CWE-862) |
+| [GHSA-8p4j-2mm9-rh78](https://sfwani.github.io/advisories/ghsa-8p4j-2mm9-rh78/) | `Tracecat` | ![6.5 Medium](https://img.shields.io/badge/6.5-Medium-d4a72c?style=flat-square) | Server side request forgery (CWE-918) |
 | [CVE-2026-53577](https://sfwani.github.io/advisories/cve-2026-53577/) | `kestra` | ![6.5 Medium](https://img.shields.io/badge/6.5-Medium-d4a72c?style=flat-square) | Incorrect authorization (CWE-863) |
 | [CVE-2026-63342](https://sfwani.github.io/advisories/cve-2026-63342/) | `hatchet` | ![6.3 Medium](https://img.shields.io/badge/6.3-Medium-d4a72c?style=flat-square) | Incorrect authorization (CWE-863) |
 | [GHSA-59h8-w5q6-mfmp](https://sfwani.github.io/advisories/ghsa-59h8-w5q6-mfmp/) | `trigger.dev` | ![5.3 Medium](https://img.shields.io/badge/5.3-Medium-d4a72c?style=flat-square) | Missing authentication (CWE-306) |
