@@ -32,13 +32,13 @@ SEVERITY_COLOR = {"critical": "8b1a1a", "high": "cf222e", "medium": "d4a72c", "l
 # GHSA-pqxw-g93w-hj9x was published High with no CVSS score and no vector, in
 # v3 or v4, so nothing upstream can supply one and it was the only row in the
 # table without a number. This vector is derived by hand from the advisory's
-# own text and computes to 9.0. It is marked wherever it is shown, because the
+# own text and computes to 8.1. It is marked wherever it is shown, because the
 # claim these surfaces make is that their numbers resolve to a public advisory
 # and this one does not.
 SELF_ASSESSED = {
     "GHSA-pqxw-g93w-hj9x": {
-        "score": 9.0,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
     },
 }
 
