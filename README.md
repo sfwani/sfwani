@@ -10,7 +10,7 @@ infrastructure that runs large language models: agent frameworks, inference serv
 workflow orchestrators, and the serialization formats they trust.
 
 <!-- COUNTERS:START -->
-`7 CVEs assigned` &nbsp;·&nbsp; `14 published advisories` &nbsp;·&nbsp; `167 filed across 59 projects`
+`7 CVEs assigned` &nbsp;·&nbsp; `15 published advisories` &nbsp;·&nbsp; `167 filed across 59 projects`
 <!-- COUNTERS:END -->
 
 </div>
@@ -20,7 +20,8 @@ workflow orchestrators, and the serialization formats they trust.
 <!-- ADVISORIES:START -->
 | Advisory | Project | CVSS | Class |
 |:---|:---|:---|:---|
-| [GHSA-v3vj-mch3-x6c2](https://sfwani.github.io/advisories/ghsa-v3vj-mch3-x6c2/) | `omnigent` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | CWE-668 |
+| [GHSA-42mf-vpmr-gw5r](https://sfwani.github.io/advisories/ghsa-42mf-vpmr-gw5r/) | `ag2` | ![9.8 Critical](https://img.shields.io/badge/9.8-Critical-8b1a1a?style=flat-square) | Command injection (CWE-78) |
+| [GHSA-v3vj-mch3-x6c2](https://sfwani.github.io/advisories/ghsa-v3vj-mch3-x6c2/) | `omnigent` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Resource exposure (CWE-668) |
 | [CVE-2026-57516](https://sfwani.github.io/advisories/cve-2026-57516/) | `ray` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Code injection (CWE-94) |
 | [CVE-2026-45675](https://sfwani.github.io/advisories/cve-2026-45675/) | `open-webui` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Privilege escalation (CWE-269) |
 | [GHSA-pqxw-g93w-hj9x](https://sfwani.github.io/advisories/ghsa-pqxw-g93w-hj9x/) | `trigger.dev` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Improper isolation (CWE-653) |

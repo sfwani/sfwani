@@ -29,16 +29,20 @@ SEVERITY_RANK = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 SEVERITY_COLOR = {"critical": "8b1a1a", "high": "cf222e", "medium": "d4a72c", "low": "2da44e"}
 
 # Kept byte for byte in step with sfwani.github.io/scripts/update_advisories.py.
-# GHSA-pqxw-g93w-hj9x was published High with no CVSS score and no vector, in
-# v3 or v4, so nothing upstream can supply one and it was the only row in the
-# table without a number. This vector is derived by hand from the advisory's
-# own text and computes to 8.1. It is marked wherever it is shown, because the
-# claim these surfaces make is that their numbers resolve to a public advisory
-# and this one does not.
+# Some advisories were published with a severity label but no CVSS score or
+# vector (v3 or v4), so nothing upstream can supply one. These vectors are
+# derived by hand from each advisory's own text and kept inside the band the
+# maintainer assigned. GHSA-pqxw-g93w-hj9x computes to 8.1; GHSA-42mf-vpmr-gw5r
+# (ag2, shell=True command-filter bypass to arbitrary OS command execution)
+# computes to 9.8.
 SELF_ASSESSED = {
     "GHSA-pqxw-g93w-hj9x": {
         "score": 8.1,
         "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+    },
+    "GHSA-42mf-vpmr-gw5r": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
     },
 }
 
@@ -76,6 +80,7 @@ CWE_LABELS = {
     "CWE-862": "Missing authorization",
     "CWE-863": "Incorrect authorization",
     "CWE-653": "Improper isolation",
+    "CWE-668": "Resource exposure",
     "CWE-918": "Server side request forgery",
     "CWE-1333": "Regex denial of service",
 }
