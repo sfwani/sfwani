@@ -21,7 +21,7 @@ workflow orchestrators, and the serialization formats they trust.
 | Advisory | Project | CVSS | Class |
 |:---|:---|:---|:---|
 | [GHSA-24q6-6h89-f9p7](https://sfwani.github.io/advisories/ghsa-24q6-6h89-f9p7/) | `autogpt-platform-backend` | ![10.0 Critical](https://img.shields.io/badge/10.0-Critical-8b1a1a?style=flat-square) | Authentication bypass (CWE-287) |
-| [GHSA-42mf-vpmr-gw5r](https://sfwani.github.io/advisories/ghsa-42mf-vpmr-gw5r/) | `ag2` | ![9.8 Critical](https://img.shields.io/badge/9.8-Critical-8b1a1a?style=flat-square) | Command injection (CWE-78) |
+| [GHSA-42mf-vpmr-gw5r](https://sfwani.github.io/advisories/ghsa-42mf-vpmr-gw5r/) | `ag2` | ![9.9 Critical](https://img.shields.io/badge/9.9-Critical-8b1a1a?style=flat-square) | Command injection (CWE-78) |
 | [GHSA-jmr9-98g4-2phv](https://sfwani.github.io/advisories/ghsa-jmr9-98g4-2phv/) | `portainer` | ![9.4 Critical](https://img.shields.io/badge/9.4-Critical-8b1a1a?style=flat-square) | Access control (CWE-284) |
 | [CVE-2026-49950](https://sfwani.github.io/advisories/cve-2026-49950/) | `xinference` | ![9.3 Critical](https://img.shields.io/badge/9.3-Critical-8b1a1a?style=flat-square) | Missing authentication (CWE-306) |
 | [GHSA-v3vj-mch3-x6c2](https://sfwani.github.io/advisories/ghsa-v3vj-mch3-x6c2/) | `omnigent` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Resource exposure (CWE-668) |
