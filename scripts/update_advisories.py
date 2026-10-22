@@ -44,6 +44,14 @@ SELF_ASSESSED = {
         "score": 9.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
     },
+    # ag2ai/ag2, second advisory: published High with no CVSS vector. Path
+    # traversal in DiskKnowledgeStore (startswith containment bypassed by a
+    # prefix-sharing sibling). Score and vector taken verbatim from the
+    # advisory's own CVSS line, inside the maintainer's High band.
+    "GHSA-qrjx-72xx-xhmh": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+    },
 }
 
 
