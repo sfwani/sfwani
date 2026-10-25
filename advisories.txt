@@ -21,3 +21,4 @@ Comfy-Org/ComfyUI             GHSA-rvxv-29p8-pxgq
 Comfy-Org/ComfyUI             GHSA-pj59-g5vv-74q4
 teableio/teable               GHSA-w677-p6hx-85vw
 teableio/teable               GHSA-jvm6-86c5-f8j8
+vendurehq/vendure             GHSA-hxvp-ff3g-qcj7
