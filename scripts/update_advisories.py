@@ -34,7 +34,7 @@ SEVERITY_COLOR = {"critical": "8b1a1a", "high": "cf222e", "medium": "d4a72c", "l
 # derived by hand from each advisory's own text and kept inside the band the
 # maintainer assigned. GHSA-pqxw-g93w-hj9x computes to 8.1; GHSA-42mf-vpmr-gw5r
 # (ag2, shell=True command-filter bypass to arbitrary OS command execution)
-# computes to 9.8.
+# computes to 9.9.
 SELF_ASSESSED = {
     "GHSA-pqxw-g93w-hj9x": {
         "score": 8.1,
@@ -46,10 +46,12 @@ SELF_ASSESSED = {
     },
     # ag2ai/ag2, second advisory: published High with no CVSS vector. Path
     # traversal in DiskKnowledgeStore (startswith containment bypassed by a
-    # prefix-sharing sibling). Score and vector taken verbatim from the
-    # advisory's own CVSS line, inside the maintainer's High band.
+    # prefix-sharing sibling). The vector is taken verbatim from the
+    # advisory's own CVSS line. That line states 7.5, but the vector computes
+    # to 8.1 under CVSS 3.1 (exploitability 2.835 + impact 5.177, rounded up),
+    # so the score is the computed one, still inside the maintainer's High band.
     "GHSA-qrjx-72xx-xhmh": {
-        "score": 7.5,
+        "score": 8.1,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
     },
 }
@@ -166,8 +168,9 @@ def resolve_repo_level(s, repo, ghsa_id):
     """Only returns an advisory that is published and where USER credit is accepted."""
     r = s.get(f"{API}/repos/{repo}/security-advisories/{ghsa_id}", timeout=30)
     if r.status_code != 200:
-        print(f"skip {ghsa_id}: HTTP {r.status_code}", file=sys.stderr)
-        return None
+        # A failed fetch is not a withdrawn advisory. Skipping it would write
+        # a shorter record, so stop and leave every file as it was.
+        raise SystemExit(f"{ghsa_id}: HTTP {r.status_code}, nothing written")
     a = r.json()
     if a.get("state") != "published" or a.get("withdrawn_at"):
         print(f"skip {ghsa_id}: state={a.get('state')}", file=sys.stderr)
@@ -198,8 +201,9 @@ def resolve_repo_level(s, repo, ghsa_id):
 def resolve(s, ghsa_id):
     r = s.get(f"{API}/advisories/{ghsa_id}", timeout=30)
     if r.status_code != 200:
-        print(f"skip {ghsa_id}: HTTP {r.status_code}", file=sys.stderr)
-        return None
+        # A failed fetch is not a withdrawn advisory. Skipping it would write
+        # a shorter record, so stop and leave every file as it was.
+        raise SystemExit(f"{ghsa_id}: HTTP {r.status_code}, nothing written")
     a = r.json()
     if a.get("withdrawn_at"):
         return None
