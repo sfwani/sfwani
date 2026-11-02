@@ -2,7 +2,7 @@
 
 # Sanaan Fayaz Wani
 
-### I break AI agent frameworks.
+### I help secure the Agentic landscape.
 
 Security Engineer at Amazon, working in IAM security on bringing agentic AI into identity
 and access management. Outside that, I hunt unauthenticated remote code execution in the
