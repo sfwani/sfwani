@@ -10,7 +10,7 @@ infrastructure that runs large language models: agent frameworks, inference serv
 workflow orchestrators, and the serialization formats they trust.
 
 <!-- COUNTERS:START -->
-`10 CVEs assigned` &nbsp;·&nbsp; `25 published advisories` &nbsp;·&nbsp; `167 filed across 59 projects`
+`10 CVEs assigned` &nbsp;·&nbsp; `29 published advisories` &nbsp;·&nbsp; `167 filed across 59 projects`
 <!-- COUNTERS:END -->
 
 </div>
@@ -26,6 +26,7 @@ workflow orchestrators, and the serialization formats they trust.
 | [CVE-2026-49950](https://sfwani.github.io/advisories/cve-2026-49950/) | `xinference` | ![9.3 Critical](https://img.shields.io/badge/9.3-Critical-8b1a1a?style=flat-square) | Missing authentication (CWE-306) |
 | [GHSA-hxvp-ff3g-qcj7](https://sfwani.github.io/advisories/ghsa-hxvp-ff3g-qcj7/) | `@vendure/core` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Information disclosure (CWE-200) |
 | [GHSA-v3vj-mch3-x6c2](https://sfwani.github.io/advisories/ghsa-v3vj-mch3-x6c2/) | `omnigent` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Resource exposure (CWE-668) |
+| [GHSA-5mc6-2qfj-59cg](https://sfwani.github.io/advisories/ghsa-5mc6-2qfj-59cg/) | `opik` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Code injection (CWE-94) |
 | [CVE-2026-57516](https://sfwani.github.io/advisories/cve-2026-57516/) | `ray` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Code injection (CWE-94) |
 | [GHSA-57mf-wqwq-6g6x](https://sfwani.github.io/advisories/ghsa-57mf-wqwq-6g6x/) | `autogpt-platform-backend` | ![8.2 High](https://img.shields.io/badge/8.2-High-cf222e?style=flat-square) | Hard-coded crypto key (CWE-321) |
 | [GHSA-qrjx-72xx-xhmh](https://sfwani.github.io/advisories/ghsa-qrjx-72xx-xhmh/) | `ag2` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Path traversal (CWE-22) |
@@ -39,12 +40,15 @@ workflow orchestrators, and the serialization formats they trust.
 | [GHSA-w677-p6hx-85vw](https://sfwani.github.io/advisories/ghsa-w677-p6hx-85vw/) | `teable` | ![7.1 High](https://img.shields.io/badge/7.1-High-cf222e?style=flat-square) | Authentication bypass (CWE-287) |
 | [GHSA-8p4j-2mm9-rh78](https://sfwani.github.io/advisories/ghsa-8p4j-2mm9-rh78/) | `Tracecat` | ![6.5 Medium](https://img.shields.io/badge/6.5-Medium-d4a72c?style=flat-square) | Server side request forgery (CWE-918) |
 | [CVE-2026-53577](https://sfwani.github.io/advisories/cve-2026-53577/) | `kestra` | ![6.5 Medium](https://img.shields.io/badge/6.5-Medium-d4a72c?style=flat-square) | Incorrect authorization (CWE-863) |
+| [GHSA-jcc2-3vff-7867](https://sfwani.github.io/advisories/ghsa-jcc2-3vff-7867/) | `nocodb` | ![6.5 Medium](https://img.shields.io/badge/6.5-Medium-d4a72c?style=flat-square) | CWE-522 |
 | [GHSA-jvm6-86c5-f8j8](https://sfwani.github.io/advisories/ghsa-jvm6-86c5-f8j8/) | `teable` | ![6.5 Medium](https://img.shields.io/badge/6.5-Medium-d4a72c?style=flat-square) | Server side request forgery (CWE-918) |
 | [CVE-2026-63342](https://sfwani.github.io/advisories/cve-2026-63342/) | `hatchet` | ![6.3 Medium](https://img.shields.io/badge/6.3-Medium-d4a72c?style=flat-square) | Incorrect authorization (CWE-863) |
 | [GHSA-59h8-w5q6-mfmp](https://sfwani.github.io/advisories/ghsa-59h8-w5q6-mfmp/) | `trigger.dev` | ![5.3 Medium](https://img.shields.io/badge/5.3-Medium-d4a72c?style=flat-square) | Missing authentication (CWE-306) |
 | [CVE-2026-73301](https://sfwani.github.io/advisories/cve-2026-73301/) | `@budibase/server` | ![4.3 Medium](https://img.shields.io/badge/4.3-Medium-d4a72c?style=flat-square) | Missing authorization (CWE-862) |
+| [GHSA-64mc-4p6f-r7x9](https://sfwani.github.io/advisories/ghsa-64mc-4p6f-r7x9/) | `vaultwarden` | ![4.3 Medium](https://img.shields.io/badge/4.3-Medium-d4a72c?style=flat-square) | Incorrect authorization (CWE-863) |
 | [GHSA-xf86-hfpm-92xr](https://sfwani.github.io/advisories/ghsa-xf86-hfpm-92xr/) | `directus` | ![3.1 Low](https://img.shields.io/badge/3.1-Low-2da44e?style=flat-square) | Incorrect authorization (CWE-863) |
 | [CVE-2026-59715](https://sfwani.github.io/advisories/cve-2026-59715/) | `open-webui` | ![3.1 Low](https://img.shields.io/badge/3.1-Low-2da44e?style=flat-square) | Missing authentication (CWE-306) |
+| [GHSA-jmgj-cq6g-6hr2](https://sfwani.github.io/advisories/ghsa-jmgj-cq6g-6hr2/) | `nocodb` | ![2.7 Low](https://img.shields.io/badge/2.7-Low-2da44e?style=flat-square) | Incorrect authorization (CWE-863) |
 <!-- ADVISORIES:END -->
 
 Each advisory above links to a full writeup: root cause, the vulnerable code, reproduction
