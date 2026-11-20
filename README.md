@@ -10,7 +10,7 @@ infrastructure that runs large language models: agent frameworks, inference serv
 workflow orchestrators, and the serialization formats they trust.
 
 <!-- COUNTERS:START -->
-`11 CVEs assigned` &nbsp;·&nbsp; `29 published advisories` &nbsp;·&nbsp; `167 filed across 59 projects`
+`12 CVEs assigned` &nbsp;·&nbsp; `29 published advisories` &nbsp;·&nbsp; `167 filed across 59 projects`
 <!-- COUNTERS:END -->
 
 </div>
@@ -28,7 +28,7 @@ workflow orchestrators, and the serialization formats they trust.
 | [GHSA-5mc6-2qfj-59cg](https://sfwani.github.io/advisories/ghsa-5mc6-2qfj-59cg/) | `opik` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Code injection (CWE-94) |
 | [CVE-2026-57516](https://sfwani.github.io/advisories/cve-2026-57516/) | `ray` | ![8.8 High](https://img.shields.io/badge/8.8-High-cf222e?style=flat-square) | Code injection (CWE-94) |
 | [GHSA-jmr9-98g4-2phv](https://sfwani.github.io/advisories/ghsa-jmr9-98g4-2phv/) | `portainer` | ![8.7 High](https://img.shields.io/badge/8.7-High-cf222e?style=flat-square) | Access control (CWE-284) |
-| [GHSA-57mf-wqwq-6g6x](https://sfwani.github.io/advisories/ghsa-57mf-wqwq-6g6x/) | `autogpt-platform-beta` | ![8.2 High](https://img.shields.io/badge/8.2-High-cf222e?style=flat-square) | Hard-coded crypto key (CWE-321) |
+| [CVE-2026-132257](https://sfwani.github.io/advisories/cve-2026-132257/) | `autogpt-platform-beta` | ![8.2 High](https://img.shields.io/badge/8.2-High-cf222e?style=flat-square) | Hard-coded crypto key (CWE-321) |
 | [GHSA-qrjx-72xx-xhmh](https://sfwani.github.io/advisories/ghsa-qrjx-72xx-xhmh/) | `ag2` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Path traversal (CWE-22) |
 | [CVE-2026-45675](https://sfwani.github.io/advisories/cve-2026-45675/) | `open-webui` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Privilege escalation (CWE-269) |
 | [GHSA-pqxw-g93w-hj9x](https://sfwani.github.io/advisories/ghsa-pqxw-g93w-hj9x/) | `trigger.dev` | ![8.1 High](https://img.shields.io/badge/8.1-High-cf222e?style=flat-square) | Improper isolation (CWE-653) |
